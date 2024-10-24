@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Meats</title>
+    <link href="
+https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.min.css
+" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <div>
+            <form>
+                <label for="meatsSelect" class="form-label">Fav Meats</label>
+                <select class="form-select" id="meatsSelect">
+                    <option value="">Select...</option>
+                    <!-- <option value="1">Steak</option>
+                    <option value="2">Lamb</option>
+                    <option value="3">Crab</option>
+                    <option value="3">Salmon</option>
+                    <option value="3">Oxtail</option> -->
+                 </select>
+                 <button onclick="showDetails()" type="button" class="btn btn-outline-secondary">Show Details</button>
+            </form>
+        </div>
+        <div id="detailsDiv"></div>
+    </main>
+    <script>
+"use strict"
+//this java script belonging to "select list exercise"
+
+//get html elements into variables
+//create an array ||you want an id and a name temp and preparation comes later for details specfically
+const favoriteMeats = [ //this is wrong review favoriteMeats
+    { id: 1 , name: "Steak", prepared:"Seared", temperature: "Medium-rare." }, // here by seperating with quotes""" and commas, also colon:! to specify the additional details for the dropdown
+    { id: 2 , name: "Lamb", prepared:"Koftka", temperature:"Medium rare- Well done" },
+    { id: 3 , name: "Crab", prepared:"Crab Legs", temperature:"steamed" },
+    { id: 4 , name: "Salmon", prepared:"Seared", temperature: "Medium-rare." },
+    { id: 5 , name: "Oxtail", prepared:"stewed", temperature:"well done" }, //must do part b to make the js show up on the page
+];
+
+let meatsSelect = document.getElementById("meatsSelect");
+let detailsDiv = document.getElementById("detailsDiv");// next is a for const as now we are doing a for of. 
+for (const meats of favoriteMeats) {
+    let option = new Option (meats.name, meats.id)
+    meatsSelect.appendChild(option) //new creates a new text, string, or value
+}//when inspecting on the webpage, they insist that id isn't defined 
+
+
+function showDetails() {
+    let id = Number(meatsSelect.value)
+    console.log(id); //id wasn't being defined before because there was a consol log under let option above
+    let selectedMeats;
+    for ( const meat of favoriteMeats) {
+        if(meat.id === id) {
+            selectedMeats = meat;
+            break;
+        }
+    }
+    console.log(selectedMeats);
+    detailsDiv.innerText = `${selectedMeats.name} (${selectedMeats.prepared}) was selected. The temperature cook will be ${selectedMeats.temperature}.`; //remember backticks ``` can be used to place a code block/block of code.
+}
+//is commented out as it isn't needed anymore// let option = document.createElement("option");
+// option.value = "1";
+// option.innerText = "Steak";
+// meatsSelect.appendChild(option);
+    </script>
+</body>
+</html>

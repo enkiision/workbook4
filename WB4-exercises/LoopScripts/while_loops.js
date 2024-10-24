@@ -12,6 +12,7 @@
 let count = 1;
 
 while (count <= 7) {
+      //2. a condition that must be true for the loop to keep executing
     console.log("I love loops"); //if you add + count then the numbers will be listed alongside I love loops
-    count = count + 1;
+    count = count + 1;//3. code that runs at the bottom of each iteration
 }
